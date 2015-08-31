@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
       //TODO: Send the subscription subscription.endpoint
       //to your server and save it to tsend a push message and a later date
 
-      return sendSubscriptionToServer(subscription);
+      //return sendSubscriptionToServer(subscription);
     });
   }).catch(function(err) {
     // registration failed
