@@ -13,10 +13,20 @@ if ('serviceWorker' in navigator) {
 
         return sendSubscriptionToServer(subscription);
     });
-  }).catch(function(err) {
-    // registration failed
-    console.log('ServiceWorker registration failed: ', err);
-  });
+  }).catch(function(e) {
+        if (Notification.permission === 'denied') {
+          // The user denied the notification permission which
+          // means we failed to subscribe and the user will need
+          // to manually change the notification permission to
+          // subscribe to push messages
+          window.Demo.debug.log('Permission for Notifications was denied');
+        } else {
+          // A problem occurred with the subscription, this can
+          // often be down to an issue or lack of the gcm_sender_id
+          // and / or gcm_user_visible_only
+          window.Demo.debug.log('Unable to subscribe to push.', e);
+        }
+      });
 }
 
 function sendSubscriptionToServer(subscription) {
