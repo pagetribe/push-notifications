@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+  navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
     //Registration was successfull
     console.log("ServiceWorker registration successful with scope: ", registration.scope);
     registration.pushManager.subscribe({userVisibleOnly: true})
