@@ -2,15 +2,16 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js').then(function(registration) {
     //Registration was successfull
     console.log("ServiceWorker registration successful with scope: ", registration.scope);
-    registration.pushManager.subscribe().then(function(subscription){
-      isPushEnabled = true;
-      console.log("subscription.subcriptionId: ", subscription.subscriptionId);
-      console.log("subscription.endpoint: ", subscription.endpoint);
+    registration.pushManager.subscribe({userVisibleOnly: true})
+      .then(function(subscription) {
+        isPushEnabled = true;
+        //console.log("subscription.subcriptionId: ", subscription.subscriptionId);
+        console.log("subscription.endpoint: ", subscription.endpoint);
       
-      //TODO: Send the subscription subscription.endpoint
-      //to your server and save it to tsend a push message and a later date
+        //TODO: Send the subscription subscription.endpoint
+        //to your server and save it to tsend a push message and a later date
 
-      return sendSubscriptionToServer(subscription);
+        return sendSubscriptionToServer(subscription);
     });
   }).catch(function(err) {
     // registration failed
