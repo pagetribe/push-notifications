@@ -5,7 +5,7 @@ if ('serviceWorker' in navigator) {
     registration.pushManager.subscribe({userVisibleOnly: true})
       .then(function(subscription) {
         isPushEnabled = true;
-        //console.log("subscription.subcriptionId: ", subscription.subscriptionId);
+        console.log("subscription.subcriptionId: ", subscription.subscriptionId);
         console.log("subscription.endpoint: ", subscription.endpoint);
       
         //TODO: Send the subscription subscription.endpoint
